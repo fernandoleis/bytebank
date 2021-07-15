@@ -1,9 +1,15 @@
-import 'package:estudo/database/app_database.dart';
-import 'package:estudo/models/contact.dart';
-import 'package:estudo/screens/contact_form.dart';
+import 'package:bytebank/dao/contacts_dao.dart';
+import 'package:bytebank/models/contact.dart';
+import 'package:bytebank/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
-class ContactsList extends StatelessWidget {
+class ContactsList extends StatefulWidget {
+  @override
+  _ContactsListState createState() => _ContactsListState();
+}
+
+class _ContactsListState extends State<ContactsList> {
+  final ContactDao _dao = ContactDao();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +18,7 @@ class ContactsList extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: [],
-        future: findAll(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -25,7 +31,6 @@ class ContactsList extends StatelessWidget {
                   children: [CircularProgressIndicator(), Text('Loading')],
                 ),
               );
-              break;
             case ConnectionState.active:
               break;
             case ConnectionState.done:
@@ -37,7 +42,6 @@ class ContactsList extends StatelessWidget {
                 },
                 itemCount: contacts.length,
               );
-              break;
           }
           return Text('Unknown error');
         },
@@ -51,7 +55,7 @@ class ContactsList extends StatelessWidget {
                 ),
               )
               .then(
-                (value) => debugPrint(value.toString()),
+                (value) => setState(() {}),
               );
         },
         child: Icon(Icons.add),

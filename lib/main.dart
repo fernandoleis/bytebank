@@ -1,8 +1,5 @@
-import 'package:estudo/models/contact.dart';
-import 'package:estudo/screens/dashboard.dart';
+import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
-
-import 'database/app_database.dart';
 
 void main() {
   runApp(BytebankApp());
