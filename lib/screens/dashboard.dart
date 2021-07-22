@@ -34,6 +34,11 @@ class Dashboard extends StatelessWidget {
                   'Transaction Feed',
                   Icons.description,
                   onClick: () => _showTransactionList(context),
+                ),
+                _FeatureItem(
+                  'Transaction Feed',
+                  Icons.description,
+                  onClick: () => _showTransactionList(context),
                 )
               ],
             ),
