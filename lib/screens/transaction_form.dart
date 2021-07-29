@@ -63,9 +63,7 @@ class _TransactionFormState extends State<TransactionForm> {
                       final double? value = double.tryParse(_valueController.text);
                       final transactionCreated = Transaction(value!, widget.contact);
                       _transactionWebClient.save(transactionCreated).then((transaction) {
-                        if (transaction != null) {
-                          Navigator.pop(context);
-                        }
+                        Navigator.pop(context);
                       });
                     },
                   ),
